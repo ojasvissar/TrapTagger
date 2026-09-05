@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ojasv Issar — for WildEye Conservation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bone:#EAE4D8;
+    --bone-2:#E1D9CA;
+    --espresso:#211C16;
+    --espresso-2:#191510;
+    --olive:#4C563E;
+    --olive-soft:#7C876A;
+    --taupe:#A99B84;
+    --amber:#CF9A3C;
+    --amber-deep:#A9762A;
+    --ink:#241E17;
+    --card:#F4F0E7;
+    --line:#D2C9B6;
+    --line-dark:rgba(234,228,216,.16);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bone);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 32px}
+  h1,h2,h3{font-family:'Archivo',sans-serif;letter-spacing:-0.02em;line-height:1}
+  a{color:inherit;text-decoration:none}
+  .lbl{font-family:'Inter',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+  .amber{color:var(--amber-deep)}
+  img{display:block;max-width:100%}
+
+  /* ================= HERO ================= */
+  .hero{
+    position:relative;display:flex;flex-direction:column;min-height:94vh;
+    background:#2a241c url('https://images.unsplash.com/photo-1566708627877-859df13ae63e?w=2200&q=80&auto=format&fit=crop') center 30%/cover no-repeat;
+    color:#F1ECE1;
+  }
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,11,.55) 0%,rgba(20,16,11,.15) 34%,rgba(20,16,11,.5) 72%,rgba(18,14,10,.92) 100%);z-index:1}
+  .hero > *{position:relative;z-index:2}
+
+  nav{display:flex;justify-content:space-between;align-items:center;padding:26px 0}
+  nav .logo{font-family:'Archivo',sans-serif;font-weight:800;font-size:1.15rem;letter-spacing:-0.03em}
+  nav .logo .dotc{color:var(--amber)}
+  nav .links{display:flex;gap:30px;align-items:center}
+  nav .links a{font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#E6E0D4;opacity:.86;transition:opacity .15s}
+  nav .links a:hover{opacity:1}
+  nav .links a.pledge{color:#fff;opacity:1;padding-bottom:3px;border-bottom:2px solid var(--amber)}
+
+  .hero-mid{flex:1;display:flex;flex-direction:column;justify-content:center;padding:40px 0}
+  .hero-mid .wrap{width:100%}
+  .hero-kicker{display:flex;align-items:center;gap:12px;margin-bottom:26px;color:#E9E3D6}
+  .hero-kicker .ln{width:44px;height:1px;background:var(--amber)}
+  .hero h1{font-size:clamp(3.4rem,11vw,9rem);font-weight:800;color:#fff;text-shadow:0 2px 40px rgba(0,0,0,.35)}
+  .hero h1 .stop{color:var(--amber)}
+  .hero .pitch{margin-top:26px;max-width:44ch;font-size:clamp(1rem,1.6vw,1.2rem);color:#E7E1D5;line-height:1.6}
+  .hero .pitch b{color:#fff;font-weight:600}
+  .hero-cta{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:.92rem;padding:13px 24px;border-radius:2px;transition:transform .15s,background .15s,border-color .15s}
+  .btn-amber{background:var(--amber);color:#2a1e08}
+  .btn-amber:hover{background:#dcab52;transform:translateY(-2px)}
+  .btn-line{border:1px solid rgba(255,255,255,.4);color:#fff}
+  .btn-line:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+
+  /* bottom stat bar (wildfest style) */
+  .hero-stats{border-top:1px solid rgba(255,255,255,.18);background:rgba(16,12,8,.42);backdrop-filter:blur(3px)}
+  .hero-stats .wrap{display:flex;gap:14px;flex-wrap:wrap;padding-top:20px;padding-bottom:20px}
+  .hstat{display:flex;align-items:center;gap:13px;flex:1;min-width:200px}
+  .hstat .ic{width:34px;height:34px;flex:none;border:1px solid rgba(255,255,255,.35);border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .hstat .ic svg{width:17px;height:17px;stroke:var(--amber);fill:none;stroke-width:1.7}
+  .hstat .lb{font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#C9C1B2}
+  .hstat .vl{font-family:'Archivo',sans-serif;font-weight:700;font-size:1rem;color:#fff;margin-top:2px}
+
+  /* ================= SECTION SCAFFOLD ================= */
+  section{padding:96px 0;position:relative}
+  .head .lbl{color:var(--amber-deep);display:block;margin-bottom:18px}
+  .head h2{font-size:clamp(2.2rem,4.6vw,3.4rem);font-weight:800;max-width:16ch}
+  .head p{margin-top:18px;color:var(--taupe);font-size:1.08rem;max-width:56ch;color:#7d715c}
+
+  /* ================= MATCH / SCORED ================= */
+  .match{background:var(--bone)}
+  .reqlist{margin-top:52px;border-top:1px solid var(--line)}
+  .req{display:grid;grid-template-columns:1fr 230px;gap:40px;align-items:center;padding:30px 0;border-bottom:1px solid var(--line)}
+  .req .h{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+  .req h3{font-size:1.28rem;font-weight:700}
+  .req .flag{font-size:.64rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:2px}
+  .flag.core{background:var(--olive);color:#F1ECE1}
+  .flag.plus{background:rgba(207,154,60,.18);color:var(--amber-deep);border:1px solid rgba(207,154,60,.5)}
+  .flag.base{background:var(--bone-2);color:#8a7d67;border:1px solid var(--line)}
+  .req .want{color:var(--amber-deep);font-size:.82rem;font-weight:600;letter-spacing:.02em;margin-bottom:9px}
+  .req p{font-size:1rem;color:#3a3227;max-width:62ch}
+  .chip{display:inline-block;font-size:.72rem;font-weight:600;background:var(--card);border:1px solid var(--line);color:var(--olive);padding:3px 9px;border-radius:2px;margin:10px 6px 0 0}
+  .gauge{text-align:right}
+  .gauge .cap{font-size:.64rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#9a8d76;margin-bottom:7px}
+  .gauge .val{font-family:'Archivo',sans-serif;font-size:2rem;font-weight:800;color:var(--olive);line-height:.9}
+  .bar{height:7px;background:var(--bone-2);border-radius:100px;overflow:hidden;margin-top:11px;border:1px solid var(--line)}
+  .bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--olive),var(--amber));transition:width 1.1s cubic-bezier(.2,.7,.2,1)}
+  .req.in .bar span{width:var(--w)}
+
+  /* ================= DETECTION BAND ================= */
+  .detband{padding:0;position:relative;background:var(--espresso-2)}
+  .detband .grid{display:grid;grid-template-columns:1.05fr .95fr;align-items:stretch;min-height:520px}
+  .detband .copy{padding:84px 6vw 84px 0;display:flex;flex-direction:column;justify-content:center;color:#EEE8DC}
+  .detband .copy .wrapl{max-width:520px;margin-left:auto;padding-left:32px}
+  .detband .lbl{color:var(--amber);display:block;margin-bottom:20px}
+  .detband h2{font-family:'Archivo',sans-serif;font-size:clamp(2rem,3.8vw,3rem);font-weight:800;color:#fff;letter-spacing:-0.02em;line-height:1.02}
+  .detband p{margin-top:22px;color:#CFC7B8;font-size:1.06rem;max-width:46ch}
+  .detband p b{color:#fff;font-weight:600}
+  .detfig{position:relative;overflow:hidden;background:#15110c}
+  .detfig img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+  .bbox{position:absolute;left:20%;top:24%;width:56%;height:52%;border:2.5px solid var(--amber);z-index:3}
+  .bbox .corner{position:absolute;width:18px;height:18px;border:3px solid #fff}
+  .bbox .tl{top:-3px;left:-3px;border-right:none;border-bottom:none}
+  .bbox .tr{top:-3px;right:-3px;border-left:none;border-bottom:none}
+  .bbox .bl{bottom:-3px;left:-3px;border-right:none;border-top:none}
+  .bbox .br{bottom:-3px;right:-3px;border-left:none;border-top:none}
+  .bbox .tag{position:absolute;top:-30px;left:-2px;background:var(--amber);color:#241a06;font-family:'Archivo',sans-serif;font-weight:700;font-size:.82rem;padding:3px 11px;letter-spacing:.01em;white-space:nowrap}
+  .scan{position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(207,154,60,.95),transparent);top:24%;opacity:0;z-index:2}
+  @keyframes drawbox{from{clip-path:inset(50% 50% 50% 50%);opacity:0}to{clip-path:inset(0 0 0 0);opacity:1}}
+  @keyframes popin{from{opacity:0;transform:translateY(6px) scale(.9)}to{opacity:1;transform:none}}
+  @keyframes scanmove{0%{top:24%;opacity:0}12%{opacity:1}88%{opacity:1}100%{top:76%;opacity:0}}
+  .detfig.on .bbox{animation:drawbox .9s cubic-bezier(.2,.7,.2,1) .2s both}
+  .detfig.on .bbox .corner{animation:popin .4s ease 1s both}
+  .detfig.on .bbox .tag{animation:popin .45s ease 1.15s both}
+  .detfig.on .scan{animation:scanmove 2.6s ease .2s 1}
+
+  /* ================= TWIN SYSTEMS (Vintality) ================= */
+  .twin{background:var(--card)}
+  .twin .cols{display:grid;grid-template-columns:1fr 88px 1fr;gap:0;margin-top:54px;align-items:stretch}
+  .tcard{border:1px solid var(--line);background:var(--bone);padding:34px 32px}
+  .tcard.mine{border-top:3px solid var(--olive)}
+  .tcard.yours{border-top:3px solid var(--amber)}
+  .tcard .tk{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#9a8d76;margin-bottom:6px}
+  .tcard h3{font-size:1.5rem;font-weight:800;margin-bottom:4px}
+  .tcard .role{font-size:.92rem;color:var(--amber-deep);font-weight:600;margin-bottom:22px}
+  .flow{list-style:none}
+  .flow li{position:relative;padding:0 0 20px 26px;font-size:.96rem;color:#3a3227}
+  .flow li::before{content:"";position:absolute;left:5px;top:7px;width:8px;height:8px;border-radius:50%;background:var(--olive)}
+  .tcard.yours .flow li::before{background:var(--amber)}
+  .flow li::after{content:"";position:absolute;left:8px;top:16px;bottom:4px;width:1px;background:var(--line)}
+  .flow li:last-child{padding-bottom:0}
+  .flow li:last-child::after{display:none}
+  .flow li b{font-weight:600;color:var(--ink)}
+  .twinbridge{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+  .twinbridge .eq{font-family:'Archivo',sans-serif;font-size:2.4rem;font-weight:800;color:var(--amber-deep)}
+  .twinbridge .lb{writing-mode:vertical-rl;font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#9a8d76}
+  .twinfoot{margin-top:30px;font-size:1.12rem;color:#3a3227;max-width:74ch;line-height:1.6}
+  .twinfoot b{color:var(--ink);font-weight:700}
+
+  /* ================= PIPELINE ================= */
+  .spot{position:relative;color:#EDE7DB;overflow:hidden;background:var(--espresso)}
+  .spot::before{content:"";position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1757777598981-2a589811168d?w=2000&q=80&auto=format&fit=crop') center/cover no-repeat;opacity:.12}
+  .spot > *{position:relative;z-index:2}
+  .spot .head .lbl{color:var(--amber)}
+  .spot .head h2{color:#fff}
+  .spot .head p{color:#CFC7B8}
+  .figwrap{margin-top:50px;border:1px solid var(--line-dark);background:rgba(12,9,6,.5);padding:38px 32px 32px}
+  .figcap{display:flex;align-items:center;gap:10px;font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#B79A6E;margin-bottom:30px}
+  .figcap .num{background:var(--amber);color:#2a1e08;font-weight:700;padding:2px 8px}
+  .pipe{display:grid;grid-template-columns:repeat(5,1fr)}
+  .node{position:relative;text-align:center;padding:0 12px}
+  .node .ico{width:60px;height:60px;margin:0 auto 15px;border-radius:50%;background:rgba(207,154,60,.1);border:1px solid rgba(207,154,60,.4);display:flex;align-items:center;justify-content:center}
+  .node .ico svg{width:26px;height:26px;stroke:var(--amber);fill:none;stroke-width:1.7}
+  .node .nt{font-family:'Archivo',sans-serif;font-weight:700;font-size:1rem;color:#fff;margin-bottom:6px}
+  .node .nd{font-size:.82rem;color:#B7AF9F;line-height:1.5}
+  .node .me{margin-top:13px;font-size:.66rem;font-weight:600;letter-spacing:.04em;color:var(--amber);background:rgba(207,154,60,.1);border:1px solid rgba(207,154,60,.3);padding:5px 8px;display:inline-block}
+  .conn{position:absolute;top:30px;right:-50%;width:100%;height:2px;z-index:0}
+  .conn svg{width:100%;height:10px;overflow:visible}
+  .conn line{stroke:rgba(207,154,60,.4);stroke-width:2;stroke-dasharray:5 6}
+  .flowdots .conn line{animation:flow 1.3s linear infinite}
+  @keyframes flow{to{stroke-dashoffset:-22}}
+  .node:last-child .conn{display:none}
+  .figfoot{margin-top:32px;padding-top:24px;border-top:1px solid var(--line-dark);color:#C6BEAE;font-size:1rem;max-width:72ch}
+  .figfoot b{color:#fff}
+  .statrow{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:44px}
+  .stat{border-left:2px solid var(--amber);padding:6px 0 6px 20px}
+  .stat .n{font-family:'Archivo',sans-serif;font-size:2.6rem;font-weight:800;color:#fff;line-height:.95}
+  .stat .l{color:#B7AF9F;font-size:.92rem;margin-top:10px}
+
+  /* ================= SKILLS ================= */
+  .skills{background:var(--bone)}
+  .skillgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:52px;border:1px solid var(--line);border-radius:2px;overflow:hidden}
+  .skcard{background:var(--card);padding:28px 28px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .skcard .ski{width:40px;height:40px;border-radius:50%;background:var(--bone-2);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+  .skcard .ski svg{width:20px;height:20px;stroke:var(--olive);fill:none;stroke-width:1.7}
+  .skcard h3{font-size:1.04rem;font-weight:700;margin-bottom:10px}
+  .skcard .row{color:#6f634f;font-size:.92rem;line-height:1.7}
+
+  /* ================= EXPERIENCE ================= */
+  .exp{background:var(--card);border-top:1px solid var(--line)}
+  .xp{margin-top:52px;border-left:2px solid var(--line);padding-left:32px;margin-left:6px}
+  .xp .item{position:relative;padding-bottom:40px}
+  .xp .item:last-child{padding-bottom:0}
+  .xp .item::before{content:"";position:absolute;left:-40px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px var(--card)}
+  .xp .item.mark-olive::before{background:var(--olive)}
+  .xp h3{font-size:1.32rem;font-weight:800}
+  .xp .when{color:var(--amber-deep);font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin:5px 0 11px}
+  .xp p{font-size:1rem;color:#3a3227;max-width:70ch}
+
+  /* ================= LOCATION ================= */
+  .loc{background:var(--bone)}
+  .loc .card{background:var(--card);border:1px solid var(--line);padding:44px 46px}
+  .loc .lbl{color:var(--amber-deep);display:block;margin-bottom:16px}
+  .loc h2{font-size:clamp(1.9rem,3.6vw,2.7rem);font-weight:800;margin-bottom:10px}
+  .loc .lead{color:#6f634f;margin-bottom:34px;max-width:64ch;font-size:1.05rem}
+  .tz{margin:6px 0 34px}
+  .tz .tzc{font-size:.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#9a8d76;margin-bottom:18px}
+  .lane{display:grid;grid-template-columns:132px 1fr;align-items:center;gap:18px;margin-bottom:12px}
+  .lane .who{font-size:.88rem;font-weight:700;text-align:right;color:var(--ink)}
+  .lane .who span{display:block;font-weight:500;color:#9a8d76;font-size:.72rem}
+  .grid24{position:relative;height:36px;background:var(--bone-2);border:1px solid var(--line);overflow:hidden;border-radius:2px}
+  .work{position:absolute;top:0;bottom:0;background:rgba(76,86,62,.32);border-left:1px solid var(--olive);border-right:1px solid var(--olive)}
+  .overlap-band{position:absolute;top:0;bottom:0;background:repeating-linear-gradient(45deg,rgba(207,154,60,.55),rgba(207,154,60,.55) 6px,rgba(207,154,60,.3) 6px,rgba(207,154,60,.3) 12px);border-left:2px solid var(--amber-deep);border-right:2px solid var(--amber-deep)}
+  .ticks{display:grid;grid-template-columns:132px 1fr;gap:18px;margin-top:4px}
+  .ticks .t{display:flex;justify-content:space-between;font-size:.62rem;font-weight:600;color:#9a8d76}
+  .tzleg{display:flex;gap:22px;margin-top:16px;flex-wrap:wrap;font-size:.82rem;color:#6f634f}
+  .tzleg i{display:inline-block;width:13px;height:13px;border-radius:2px;margin-right:7px;vertical-align:-1px}
+  .tzleg .g{background:rgba(76,86,62,.6)}
+  .tzleg .o{background:var(--amber)}
+  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .fact{padding-top:18px;border-top:2px solid var(--olive)}
+  .fact h3{font-size:1.02rem;font-weight:700;margin-bottom:8px}
+  .fact p{font-size:.92rem;color:#6f634f}
+  .fact .k{color:var(--ink);font-weight:600}
+
+  /* ================= CONTACT ================= */
+  .contact{position:relative;background:var(--espresso-2);color:#EDE7DB;text-align:center;overflow:hidden}
+  .contact::before{content:"";position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1526289636136-bce3fd37f962?w=1600&q=80&auto=format&fit=crop') center/cover no-repeat;opacity:.14}
+  .contact > *{position:relative;z-index:2}
+  .contact h2{font-size:clamp(2.3rem,5vw,3.6rem);font-weight:800;color:#fff}
+  .contact p{color:#C6BEAE;margin:18px auto 0;font-size:1.1rem;max-width:56ch}
+  .clinks{display:flex;justify-content:center;gap:13px;flex-wrap:wrap;margin-top:38px}
+  .clink{display:inline-flex;align-items:center;gap:9px;color:#EDE7DB;border:1px solid rgba(255,255,255,.22);padding:13px 20px;font-weight:500;font-size:.92rem;border-radius:2px;transition:border-color .15s,background .15s}
+  .clink:hover{border-color:var(--amber);background:rgba(207,154,60,.1)}
+  .clink.primary{background:var(--amber);color:#2a1e08;border-color:var(--amber);font-weight:700}
+  .clink.primary:hover{background:#dcab52}
+  .foot{margin-top:50px;color:#8a8172;font-size:.82rem}
+
+  /* ================= RESPONSIVE ================= */
+  @media(max-width:900px){
+    .req{grid-template-columns:1fr;gap:18px}
+    .gauge{text-align:left}
+    .gauge .val{font-size:1.7rem}
+    .detband .grid{grid-template-columns:1fr}
+    .detband .copy{padding:56px 32px}
+    .detband .copy .wrapl{padding-left:0;margin-left:0;max-width:none}
+    .detfig{min-height:360px;order:-1}
+    .twin .cols{grid-template-columns:1fr;gap:0}
+    .twinbridge{flex-direction:row;padding:20px 0}
+    .twinbridge .lb{writing-mode:horizontal-tb}
+    .pipe{grid-template-columns:1fr;gap:30px}
+    .conn{display:none!important}
+    .statrow{grid-template-columns:1fr;gap:20px}
+    .skillgrid{grid-template-columns:1fr}
+    .facts{grid-template-columns:1fr}
+    .loc .card{padding:30px 24px}
+    .lane{grid-template-columns:96px 1fr;gap:12px}
+    .ticks{grid-template-columns:96px 1fr;gap:12px}
+    nav .links a:not(.pledge){display:none}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .detfig.on .bbox,.detfig.on .bbox .corner,.detfig.on .bbox .tag,.detfig.on .scan,.flowdots .conn line{animation:none!important}
+    .bbox{clip-path:none;opacity:1}
+    .bar span{transition:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="wrap">
+    <nav>
+      <div class="logo">ojasv issar<span class="dotc">.</span></div>
+      <div class="links">
+        <a href="#match">the match</a>
+        <a href="#twin">traptagger</a>
+        <a href="#experience">experience</a>
+        <a href="#contact" class="pledge">get in touch</a>
+      </div>
+    </nav>
+  </div>
+
+  <div class="hero-mid">
+    <div class="wrap">
+      <div class="hero-kicker lbl"><span class="ln"></span> Software Engineer application · for WildEye</div>
+      <h1>built to see<span class="stop">.</span></h1>
+      <p class="pitch">You run computer vision over millions of camera-trap images and turn it into decisions conservationists trust. That is the exact system I already build. <b>Now I want to build it for wildlife.</b></p>
+      <div class="hero-cta">
+        <a class="btn btn-amber" href="mailto:nicholas@wildeyeconservation.org?subject=Software%20Engineer%20Application%20%E2%80%94%20Ojasv%20Issar">Reply to me</a>
+        <a class="btn btn-line" href="#match">See how I fit</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="wrap">
+      <div class="hstat">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="1.5"/></svg></div>
+        <div><div class="lb">Focus</div><div class="vl">Computer vision &amp; ML pipelines</div></div>
+      </div>
+      <div class="hstat">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 16v-5M12 16V8M16 16v-8"/></svg></div>
+        <div><div class="lb">Experience</div><div class="vl">3.5+ years, production systems</div></div>
+      </div>
+      <div class="hstat">
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></div>
+        <div><div class="lb">Available</div><div class="vl">Immediately · remote</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= SCORED REQUIREMENTS ================= -->
+<section class="match" id="match">
+  <div class="wrap">
+    <div class="head">
+      <span class="lbl">Your posting, scored</span>
+      <h2>Every requirement, and where I land</h2>
+      <p>Read this like one of TrapTagger's own outputs: each line is a requirement from your ad, with an honest confidence read on the match.</p>
+    </div>
+    <div class="reqlist">
+
+      <div class="req">
+        <div>
+          <div class="h"><h3>Machine learning &amp; computer vision</h3><span class="flag plus">you: advantageous</span></div>
+          <div class="want">For TrapTagger, this is the whole job.</div>
+          <p>TrapTagger detects and classifies animals in camera-trap images. That is my home turf. I build with YOLO, CNNs and Transformers and have taken models from notebook to production inference. The "Leopard 0.9" box on your poster is the kind of output I already ship.</p>
+          <span class="chip">YOLO</span><span class="chip">CNNs</span><span class="chip">PyTorch</span><span class="chip">TensorFlow</span><span class="chip">Transformers</span>
+        </div>
+        <div class="gauge"><div class="cap">match confidence</div><div class="val">0.98</div><div class="bar" style="--w:98%"><span></span></div></div>
+      </div>
+
+      <div class="req">
+        <div>
+          <div class="h"><h3>Full-stack Python, React &amp; cloud</h3><span class="flag core">core skill</span></div>
+          <div class="want">The technical heart of the role.</div>
+          <p>Python has been my primary language for years, and I built a production React front-end over a live platform at Vintality. I ship cloud-native APIs deployed end to end on AWS (Lambda, S3, EC2, EventBridge) and containerised with Docker on Linux, moving comfortably from data layer to interface.</p>
+          <span class="chip">Python</span><span class="chip">React</span><span class="chip">AWS Lambda</span><span class="chip">Docker</span><span class="chip">REST APIs</span>
+        </div>
+        <div class="gauge"><div class="cap">match confidence</div><div class="val">0.94</div><div class="bar" style="--w:94%"><span></span></div></div>
+      </div>
+
+      <div class="req">
+        <div>
+          <div class="h"><h3>Big data</h3><span class="flag plus">you: advantageous</span></div>
+          <div class="want">Unavoidable at roughly 100M images a year.</div>
+          <p>Processing 100 million images for 200 organisations is a data-engineering problem as much as a modelling one. I build distributed ETL pipelines with Kafka, Airflow and PySpark over Snowflake, Postgres, MongoDB and Neo4j, with monitoring and alerting built in from the start.</p>
+          <span class="chip">Kafka</span><span class="chip">Airflow</span><span class="chip">PySpark</span><span class="chip">Snowflake</span><span class="chip">PostGIS</span>
+        </div>
+        <div class="gauge"><div class="cap">match confidence</div><div class="val">0.90</div><div class="bar" style="--w:90%"><span></span></div></div>
+      </div>
+
+      <div class="req">
+        <div>
+          <div class="h"><h3>Postgraduate degree, appropriate field</h3><span class="flag plus">you: advantageous</span></div>
+          <div class="want">The candidate you hoped for.</div>
+          <p>Master of Data Science from the University of British Columbia, graduated with 91%: ML systems, statistics and scalable data infrastructure, which is precisely the ground this role stands on. I also have a peer-reviewed paper accepted at ICICC 2026 (Springer).</p>
+          <span class="chip">MDS · UBC · 91%</span><span class="chip">Springer / ICICC 2026</span>
+        </div>
+        <div class="gauge"><div class="cap">match confidence</div><div class="val">0.96</div><div class="bar" style="--w:96%"><span></span></div></div>
+      </div>
+
+      <div class="req">
+        <div>
+          <div class="h"><h3>CS / engineering degree &amp; fluent English</h3><span class="flag base">baseline</span></div>
+          <div class="want">The entry bar.</div>
+          <p>Computer-science foundation with the UBC postgraduate degree on top. English is fluent: I write, present and publish in it, and run remote client work across time zones every week.</p>
+        </div>
+        <div class="gauge"><div class="cap">match confidence</div><div class="val">0.99</div><div class="bar" style="--w:99%"><span></span></div></div>
+      </div>
+
+      <div class="req">
+        <div>
+          <div class="h"><h3>The right person, any experience level</h3><span class="flag core">your words</span></div>
+          <div class="want">You said you would adjust for the right fit.</div>
+          <p>I am not chasing any software job. I want the one where machine learning protects wildlife. That motivation is the part no résumé can fake, and it is why I would treat TrapTagger as something to own and improve, not just keep running.</p>
+        </div>
+        <div class="gauge"><div class="cap">match confidence</div><div class="val">1.00</div><div class="bar" style="--w:100%"><span></span></div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= DETECTION BAND ================= -->
+<section class="detband">
+  <div class="grid">
+    <div class="copy">
+      <div class="wrapl">
+        <span class="lbl">Same task, real photo</span>
+        <h2>This is TrapTagger's whole job. It is also mine.</h2>
+        <p>Your platform draws a box around an animal and names it with a confidence score. That single output sits on top of a detection model, a classifier and a pipeline to run them at volume. <b>I build all three, and take them to production.</b></p>
+      </div>
+    </div>
+    <div class="detfig" id="detfig">
+      <img src="https://images.unsplash.com/photo-1569691105751-88df003de7a4?w=1400&q=80&auto=format&fit=crop" alt="A leopard resting on a tree branch">
+      <div class="scan"></div>
+      <div class="bbox">
+        <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        <span class="tag">leopard&nbsp;&nbsp;0.97</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TWIN SYSTEMS (VINTALITY) ================= -->
+<section class="twin" id="twin">
+  <div class="wrap">
+    <div class="head">
+      <span class="lbl">Why me, specifically</span>
+      <h2>I have already built TrapTagger's twin</h2>
+      <p>At Vintality I built the same product shape you run, only the sensor was different. Turn a flood of field data into a clear, trustworthy call a non-technical person can act on.</p>
+    </div>
+
+    <div class="cols">
+      <div class="tcard mine">
+        <div class="tk">What I built</div>
+        <h3>Vintality</h3>
+        <div class="role">LLM Integration Developer · precision agriculture</div>
+        <ul class="flow">
+          <li><b>IoT sensor data</b> streams in across 100+ farms: soil moisture, disease risk, weather.</li>
+          <li><b>Interpretation layer</b>: an agentic RAG pipeline with Claude tool-use over PostgreSQL / PostGIS.</li>
+          <li><b>Trustworthy output</b>: a hallucination-validation step and an evaluation framework for accuracy.</li>
+          <li><b>The field acts</b>: farm supervisors get plain guidance, served by React on AWS Lambda.</li>
+        </ul>
+      </div>
+
+      <div class="twinbridge">
+        <div class="eq">≈</div>
+        <div class="lb">same architecture</div>
+      </div>
+
+      <div class="tcard yours">
+        <div class="tk">What you run</div>
+        <h3>TrapTagger</h3>
+        <div class="role">AI camera-trap processing · conservation</div>
+        <ul class="flow">
+          <li><b>Camera-trap images</b> stream in across 200 organisations in 32+ countries.</li>
+          <li><b>Interpretation layer</b>: vision models detect and classify each animal in the frame.</li>
+          <li><b>Trustworthy output</b>: a confidence score and structured results a reviewer can rely on.</li>
+          <li><b>The field acts</b>: conservationists get clean data, served through the web platform.</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="twinfoot"><b>Different sensor, same system.</b> I have already solved the hard part of TrapTagger, keeping a data-to-decision pipeline accurate and trustworthy for people who are not engineers, in a domain where being wrong has real cost.</p>
+  </div>
+</section>
+
+<!-- ================= PIPELINE FIGURE ================= -->
+<section class="spot">
+  <div class="wrap">
+    <div class="head">
+      <span class="lbl">The build</span>
+      <h2>Every stage of your pipeline is work I have shipped</h2>
+      <p>Strip away the wildlife and TrapTagger is a pipeline I know cold. Here it is, stage by stage, against my experience.</p>
+    </div>
+
+    <div class="figwrap flowdots">
+      <div class="figcap"><span class="num">FIG.1</span> the trap-tagger pipeline, mapped to my experience</div>
+      <div class="pipe">
+        <div class="node">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 8h4l2-3h6l2 3h4v11H3z"/><circle cx="12" cy="13" r="3.5"/></svg></div>
+          <div class="nt">Capture</div>
+          <div class="nd">Camera traps fire across dozens of countries.</div>
+          <div class="me">multi-tenant intake</div>
+          <div class="conn"><svg viewBox="0 0 100 10"><line x1="0" y1="5" x2="100" y2="5"/></svg></div>
+        </div>
+        <div class="node">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M6 16a4 4 0 0 1 0-8 5 5 0 0 1 9.6-1.5A4 4 0 0 1 18 16z"/><path d="M12 12v6M9 15l3 3 3-3"/></svg></div>
+          <div class="nt">Ingest</div>
+          <div class="nd">Images queue into cloud storage at scale.</div>
+          <div class="me">AWS S3 · EventBridge</div>
+          <div class="conn"><svg viewBox="0 0 100 10"><line x1="0" y1="5" x2="100" y2="5"/></svg></div>
+        </div>
+        <div class="node">
+          <div class="ico"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9h3M17 4v3M20 15h-3M7 20v-3"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <div class="nt">Detect</div>
+          <div class="nd">Vision models find and box each animal.</div>
+          <div class="me">YOLO · CNNs · PyTorch</div>
+          <div class="conn"><svg viewBox="0 0 100 10"><line x1="0" y1="5" x2="100" y2="5"/></svg></div>
+        </div>
+        <div class="node">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 20V9M10 20V4M16 20v-7M22 20H2"/></svg></div>
+          <div class="nt">Classify</div>
+          <div class="nd">Species and confidence scored per image.</div>
+          <div class="me">inference pipeline</div>
+          <div class="conn"><svg viewBox="0 0 100 10"><line x1="0" y1="5" x2="100" y2="5"/></svg></div>
+        </div>
+        <div class="node">
+          <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 13h5M8 15.5h8"/></svg></div>
+          <div class="nt">Act</div>
+          <div class="nd">Clean results reach people in the field.</div>
+          <div class="me">React · full-stack</div>
+        </div>
+      </div>
+      <div class="figfoot"><b>Every box on this diagram maps to work I have already delivered.</b> The parts most teams find hardest, keeping a high-volume inference pipeline reliable and its output trustworthy, are the parts I have spent years getting right.</div>
+    </div>
+
+    <div class="statrow">
+      <div class="stat"><div class="n">~100M</div><div class="l">images a year: a throughput problem I have solved on other data</div></div>
+      <div class="stat"><div class="n">200+</div><div class="l">organisations relying on uptime: reliability habits from client and contract work</div></div>
+      <div class="stat"><div class="n">32+</div><div class="l">countries: multi-tenant software, which is what I build day to day</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section class="skills">
+  <div class="wrap">
+    <div class="head">
+      <span class="lbl">The toolkit</span>
+      <h2>What I bring on day one</h2>
+    </div>
+    <div class="skillgrid">
+      <div class="skcard">
+        <div class="ski"><svg viewBox="0 0 24 24"><path d="M8 6l-5 6 5 6M16 6l5 6-5 6"/></svg></div>
+        <h3>Languages &amp; full-stack</h3>
+        <div class="row">Python, JavaScript, React, SQL, Java. REST APIs and full-stack web apps, data layer through to interface.</div>
+      </div>
+      <div class="skcard">
+        <div class="ski"><svg viewBox="0 0 24 24"><path d="M6 16a4 4 0 0 1 0-8 5 5 0 0 1 9.6-1.5A4 4 0 0 1 18 16z"/></svg></div>
+        <h3>Cloud &amp; infrastructure</h3>
+        <div class="row">AWS (Lambda, S3, EC2, Bedrock, EventBridge, SAM), Docker, Git, Linux, CI/CD.</div>
+      </div>
+      <div class="skcard">
+        <div class="ski"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>ML &amp; computer vision</h3>
+        <div class="row">YOLO, CNNs, PyTorch, TensorFlow, Transformers, scikit-learn, production inference.</div>
+      </div>
+      <div class="skcard">
+        <div class="ski"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div>
+        <h3>Data engineering</h3>
+        <div class="row">Kafka, Airflow, PySpark, Snowflake, PostgreSQL / PostGIS, MongoDB, Neo4j, FAISS, ChromaDB.</div>
+      </div>
+      <div class="skcard">
+        <div class="ski"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><path d="M21 12a9 9 0 1 1-9-9"/></svg></div>
+        <h3>Quality &amp; reliability</h3>
+        <div class="row">pytest, unit and integration testing, regression testing, benchmarking, monitoring.</div>
+      </div>
+      <div class="skcard">
+        <div class="ski"><svg viewBox="0 0 24 24"><path d="M12 3a4 4 0 0 1 4 4c0 1.5 1 2 1 4a5 5 0 0 1-10 0c0-2 1-2.5 1-4a4 4 0 0 1 4-4z"/><path d="M9 18h6M10 21h4"/></svg></div>
+        <h3>Applied AI</h3>
+        <div class="row">LLMs, agentic RAG and tool-use, prompt engineering, hallucination validation, evaluation frameworks.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section class="exp" id="experience">
+  <div class="wrap">
+    <div class="head">
+      <span class="lbl">Track record</span>
+      <h2>A few things I have shipped</h2>
+    </div>
+    <div class="xp">
+      <div class="item">
+        <h3>LLM Integration Developer, Vintality</h3>
+        <div class="when">2026 · precision-agriculture platform</div>
+        <p>Built the conversational and interpretation layer over a 100+ farm platform: an agentic RAG pipeline with Claude tool-use over PostgreSQL / PostGIS sensor data, a hallucination-validation step for trustworthy output, and seven AWS Lambda functions behind API Gateway, with a React front-end. The same data-to-decision architecture TrapTagger runs on.</p>
+      </div>
+      <div class="item mark-olive">
+        <h3>Software Engineer &amp; Data Scientist, independent</h3>
+        <div class="when">3.5+ years · 30+ clients incl. Escalera Technologies, TechLearniversity</div>
+        <p>Architected and delivered end-to-end systems: microservice backends, cloud-native APIs and production ML inference pipelines across education, analytics and e-commerce. I owned the work from architecture to deployment and monitoring, the full loop this role needs.</p>
+      </div>
+      <div class="item">
+        <h3>Distributed data platforms</h3>
+        <div class="when">Production ETL at scale</div>
+        <p>Built and deployed distributed ETL pipelines with Airflow, Kafka and PySpark over Snowflake, PostgreSQL and Neo4j, wired to real-time dashboards with automated alerting. This is the plumbing behind processing images at TrapTagger's volume.</p>
+      </div>
+      <div class="item mark-olive">
+        <h3>Master of Data Science, University of British Columbia</h3>
+        <div class="when">Graduated with 91% · publication at ICICC 2026 (Springer)</div>
+        <p>Postgraduate training in ML systems, statistics and scalable data infrastructure: the appropriate field your posting hopes for, finished and ready to apply now.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LOCATION ================= -->
+<section class="loc">
+  <div class="wrap">
+    <div class="card">
+      <span class="lbl">The honest part</span>
+      <h2>Yes, I am in Vancouver, not Johannesburg</h2>
+      <p class="lead">You wrote that you would prefer South-African candidates, but that the role is fully remote. So rather than hope you skim past it, here is the gap answered directly, starting with the worry people raise first.</p>
+
+      <div class="tz">
+        <div class="tzc">Fig.2 — a normal working day, Johannesburg vs Vancouver (my hours shifted early for overlap)</div>
+        <div class="lane">
+          <div class="who">Johannesburg<span>SAST · your team</span></div>
+          <div class="grid24"><div class="work" style="left:33.3%;width:37.5%"></div></div>
+        </div>
+        <div class="lane">
+          <div class="who">Vancouver<span>PST · me, 6am start</span></div>
+          <div class="grid24"><div class="work" style="left:25%;width:37.5%"></div><div class="overlap-band" style="left:33.3%;width:29.2%"></div></div>
+        </div>
+        <div class="ticks"><div></div><div class="t"><span>00</span><span>04</span><span>08</span><span>12</span><span>16</span><span>20</span><span>24</span></div></div>
+        <div class="tzleg">
+          <span><i class="g"></i>working hours</span>
+          <span><i class="o"></i>live overlap for calls and pairing, about four hours every day</span>
+        </div>
+      </div>
+
+      <div class="facts">
+        <div class="fact">
+          <h3>Built for remote</h3>
+          <p>My whole career is remote delivery to international clients. Async ownership, clear written updates and shipping without hand-holding are <span class="k">how I already work,</span> not a habit I would need to learn here.</p>
+        </div>
+        <div class="fact">
+          <h3>The offset works for you</h3>
+          <p>An early Vancouver start gives us roughly four live hours a day for calls and pairing. The rest of the offset is a feature: <span class="k">your pipeline gets worked on while Johannesburg sleeps.</span></p>
+        </div>
+        <div class="fact">
+          <h3>The timing lines up</h3>
+          <p>You want to start someone in November 2026 or January 2027. I have finished my degree and am free now, so I can start on your date <span class="k">with no notice period.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>Let us talk about TrapTagger</h2>
+    <p>I would love this one. Happy to walk through architecture on a call, or take a short take-home. Building a detection-and-processing slice of what you run would be a natural way to prove the fit before you commit.</p>
+    <div class="clinks">
+      <a class="clink primary" href="mailto:nicholas@wildeyeconservation.org?subject=Software%20Engineer%20Application%20%E2%80%94%20Ojasv%20Issar">Reply to me</a>
+      <a class="clink" href="mailto:ojasvissar4@gmail.com">ojasvissar4@gmail.com</a>
+      <a class="clink" href="tel:+16048315490">+1 604 831 5490</a>
+      <a class="clink" href="https://github.com/ojasvissar" target="_blank" rel="noopener">GitHub</a>
+      <a class="clink" href="https://www.linkedin.com/in/ojasvissar/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="clink" href="https://ojasvissar.github.io/resume-website/" target="_blank" rel="noopener">Portfolio</a>
+    </div>
+    <div class="foot">Ojasv Issar · Vancouver, BC, Canada · Available immediately · Prepared for WildEye Conservation</div>
+  </div>
+</section>
+
+<script>
+  // Confidence bars reveal on scroll
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function revealAll(sel){ document.querySelectorAll(sel).forEach(function(el){ el.classList.add('in','on'); }); }
+  if(reduce){ revealAll('.req'); document.getElementById('detfig').classList.add('on'); }
+  else if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in','on'); io.unobserve(e.target); } });
+    }, {threshold:0.3});
+    document.querySelectorAll('.req').forEach(function(r){ io.observe(r); });
+    var df = document.getElementById('detfig'); if(df){ io.observe(df); }
+  } else { revealAll('.req'); document.getElementById('detfig').classList.add('on'); }
+</script>
+</body>
+</html>
