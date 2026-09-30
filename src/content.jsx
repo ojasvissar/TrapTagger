@@ -30,7 +30,7 @@ export const checklist = [
     title: "React",
     text: <>I build front ends in React and in plain JavaScript. This page is a React app: <a href={REPO} target="_blank" rel="noopener">see the source on GitHub ↗</a></>,
   },
-  { title: "Any experience level", text: "4+ years. I'm a data scientist at Vintality now, and I delivered 30+ freelance projects before that." },
+  { title: "Any experience level", text: "4+ years. I'm a data scientist at Vintality now, and before that I delivered 30+ freelance projects for clients around the world." },
   { title: "Strong English", text: "I studied in Canada and co-wrote a peer-reviewed paper published by Springer." },
   { title: "Machine learning, web apps, big data", bonus: true, text: "Image models (YOLO, CNNs, vision transformers), live web dashboards, and data pipelines with Spark and Snowflake." },
   { title: "A postgraduate degree", bonus: true, text: "Master of Data Science, University of British Columbia, with a perfect 4.0 GPA." },
@@ -77,7 +77,7 @@ export const elephants = [[396, 180, 26, 28], [428, 255, 36, 26], [444, 278, 22,
 export const perks = [
   { icon: "globe", title: "Help for the Americas", text: "Researchers in North and South America get support during their own working day." },
   { icon: "ship", title: "Safer updates", text: "My afternoon is night in Africa and Europe, when fewer people are using the site. That's a good time to ship changes." },
-  { icon: "screen", title: "Remote already", text: "I work remotely at Vintality today, and my freelance clients were in Europe and India." },
+  { icon: "screen", title: "Remote already", text: "I work remotely at Vintality today. My freelance clients were all over the world: Australia, Canada, the USA, the Middle East, Europe and India." },
   { icon: "plane", title: "In person when it counts", text: "I'm happy to fly to Johannesburg for onboarding and team meet-ups.", fly: true },
 ];
 
