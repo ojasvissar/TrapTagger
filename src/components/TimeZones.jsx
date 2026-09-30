@@ -77,7 +77,7 @@ export default function TimeZones() {
   return (
     <Section id="hours" topo="paper" seed={53} base={70}>
       <div className="wrap">
-        <p className="kicker" data-wp="">04 · Working from Vancouver</p>
+        <p className="kicker">04 · Working from Vancouver</p>
         <SplitText text="Your night is my day" />
         <p className="lede">You'd prefer someone in Johannesburg, and I understand why. Here's the upside of Vancouver: it's <b>exactly 9 hours behind you, all year</b>. TrapTagger has a developer online while your team sleeps, and we still overlap every day.</p>
 

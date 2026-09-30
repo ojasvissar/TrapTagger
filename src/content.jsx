@@ -11,6 +11,17 @@ export const nav = [
   { href: "#hours", label: "Time zones" },
 ];
 
+// the section rail on the left edge, in page order
+export const rail = [
+  { id: "fit", label: "Job ad" },
+  { id: "skills", label: "Skills" },
+  { id: "air", label: "From the air" },
+  { id: "hours", label: "Time zones" },
+  { id: "why", label: "Why WildEye" },
+  { id: "plan", label: "First 90 days" },
+  { id: "contact", label: "Contact" },
+];
+
 export const stats = [
   { to: 4, suffix: "+", small: "yrs", text: "building and shipping ML" },
   { to: 30, suffix: "+", text: "projects delivered for clients" },

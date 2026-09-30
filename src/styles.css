@@ -58,15 +58,23 @@ section { padding: clamp(84px, 11vw, 136px) 0; }
 .topo .lamp path.ix { stroke-width: 2; }
 .topo .lamp text { display: none; }
 
-/* ── the trail down the page (drawn by js, wide screens only) ── */
-.trail { position: absolute; left: 0; top: 0; z-index: 20; pointer-events: none; overflow: visible; }
-.trail .base { fill: none; stroke: rgba(59, 181, 74, .5); stroke-width: 2; stroke-dasharray: 1 7; stroke-linecap: round; }
-.trail .walked { fill: none; stroke: var(--leaf); stroke-width: 3; stroke-linecap: round; }
-.trail .wp circle { fill: var(--paper); stroke: var(--leaf); stroke-width: 2; transition: fill .4s, r .4s; }
-.trail .wp.hit circle { fill: var(--leaf); }
-.trail .wp text { font: 500 10px var(--mono); letter-spacing: .1em; fill: var(--leaf); }
-.trail .me circle.core { fill: var(--leaf); stroke: #fff; stroke-width: 2.5; }
-.trail .me circle.ring { fill: none; stroke: var(--leaf); stroke-width: 1.5; animation: ring 1.8s infinite; transform-box: fill-box; transform-origin: center; }
+/* ── section rail: one dot per section, fixed to the left edge (wide screens only) ── */
+.rail { position: fixed; left: 22px; top: 50%; z-index: 40; display: none; padding: 14px 10px; border-radius: 999px; background: rgba(11, 29, 24, .72); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-shadow: 0 0 0 1px rgba(255, 255, 255, .1), 0 12px 30px -14px rgba(0, 0, 0, .6); opacity: 0; transform: translate(-14px, -50%); pointer-events: none; transition: opacity .5s, transform .6s var(--ease); }
+@media (min-width: 1180px) { .rail { display: block; } }
+.rail.show { opacity: 1; transform: translate(0, -50%); pointer-events: auto; }
+.rail ol { position: relative; z-index: 1; list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.rail-track { position: absolute; left: 14px; top: 19px; bottom: 19px; width: 2px; border-radius: 2px; background: rgba(255, 255, 255, .14); }
+.rail-fill { position: absolute; left: 0; top: 0; width: 100%; height: 0; border-radius: 2px; background: var(--leaf); transition: height .25s linear; }
+.rail li { position: relative; }
+.rail a { position: relative; display: block; width: 10px; text-decoration: none; }
+.rail .dot { display: block; width: 10px; height: 10px; border-radius: 999px; background: var(--night); box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .35); transition: height .45s var(--ease), background-color .3s, box-shadow .3s; }
+.rail li.done .dot { background: var(--night); box-shadow: inset 0 0 0 2px var(--leaf); }
+.rail li.on .dot { height: 26px; background: var(--leaf); box-shadow: 0 0 0 4px rgba(59, 181, 74, .22); }
+.rail a:hover .dot { box-shadow: inset 0 0 0 2px #fff; }
+.rail li.on a:hover .dot { box-shadow: 0 0 0 4px rgba(59, 181, 74, .35); }
+.rail .lab { position: absolute; left: 26px; top: 50%; padding: 5px 11px 4px; border-radius: 999px; background: rgba(11, 29, 24, .92); box-shadow: 0 0 0 1px rgba(255, 255, 255, .12); color: #fff; font: 500 11px var(--mono); letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; opacity: 0; transform: translate(-6px, -50%); pointer-events: none; transition: opacity .25s, transform .35s var(--ease); }
+.rail .lab b { color: var(--leaf-hi); font-weight: 500; margin-right: 6px; }
+.rail a:hover .lab, .rail a:focus-visible .lab { opacity: 1; transform: translate(0, -50%); }
 @keyframes ring { from { transform: scale(.7); opacity: .9; } to { transform: scale(2.6); opacity: 0; } }
 
 /* ── split-word headline reveal ── */

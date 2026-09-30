@@ -22,7 +22,7 @@ export function Why() {
       <img ref={img} src="img/branch-leopard.webp" alt="A leopard asleep on a branch at dusk" loading="lazy" width="1920" height="1280" />
       <div className="wrap">
         <Reveal className="why-copy">
-          <p className="kicker" data-wp="">05 · Why WildEye</p>
+          <p className="kicker">05 · Why WildEye</p>
           <SplitText text="Machine learning for wildlife is the work I want to do" />
           <p>I've always been drawn to nature. My portfolio is designed as a trail guide, and my favourite projects are about the planet: forecasting global temperatures, predicting harvests from space, and mapping where disaster aid falls short.</p>
           <p>Conservation is where those two interests meet. Camera-trap data is exactly the kind of problem I love: millions of images, lots of them empty, shot at night, with the rare species hardest to spot. Solving that well means rangers and researchers spend their time protecting animals instead of sorting photos.</p>
@@ -39,7 +39,7 @@ export function Plan() {
   return (
     <Section id="plan" topo="sand" seed={67} base={1340}>
       <div className="wrap">
-        <p className="kicker" data-wp="">06 · If you hire me</p>
+        <p className="kicker">06 · If you hire me</p>
         <SplitText text="My first 90 days" />
         <p className="lede">A simple plan, and yours to change.</p>
         <Reveal className="steps">
@@ -76,7 +76,7 @@ export function Contact() {
   return (
     <Section id="contact" className="contact" topo="night" seed={79} base={1753}>
       <div className="wrap">
-        <p className="kicker" data-wp="">07 · Next step</p>
+        <p className="kicker">07 · Next step</p>
         <SplitText text="I'd love to talk about TrapTagger." />
         <p className="lede">Either start date, 1 November 2026 or 1 January 2027, works for me. I'm free for a call at whatever time suits Johannesburg.</p>
         <Reveal className="ways">

@@ -22,7 +22,7 @@ export default function Aerial() {
   }, [inView]);
 
   return (
-    <section className="aerial" aria-labelledby="air-title">
+    <section className="aerial" id="air" aria-labelledby="air-title">
       <div className="aerial-grid">
         <div ref={ref} className={`shot${inView ? " in" : ""}`}>
           <img src="img/aerial-elephants.webp" alt="Elephants seen from a light aircraft over the Okavango Delta" loading="lazy" width="1600" height="1067" />
@@ -34,7 +34,7 @@ export default function Aerial() {
         </div>
         <div className="copy" data-topo="night">
           <Topo seed={41} base={150} />
-          <p className="kicker" data-wp="">03 · From the air</p>
+          <p className="kicker">03 · From the air</p>
           <SplitText id="air-title" text="And SurveyScope, too" />
           <p>WildEye also counts animals from light aircraft with <b>SurveyScope</b> and <b>SkySeeker</b>. I already work with images taken from above: <b>satellite images</b> for crop forecasts, and vegetation maps for vineyards at Vintality.</p>
           <p>I'd be glad to help wherever the aerial side needs it.</p>

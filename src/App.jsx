@@ -4,7 +4,7 @@ import Checklist from "./components/Checklist.jsx";
 import Skills from "./components/Skills.jsx";
 import Aerial from "./components/Aerial.jsx";
 import TimeZones from "./components/TimeZones.jsx";
-import Trail from "./components/Trail.jsx";
+import SectionRail from "./components/SectionRail.jsx";
 import { Contact, Footer, Plan, Why } from "./components/Closing.jsx";
 
 export default function App() {
@@ -22,7 +22,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
-      <Trail />
+      <SectionRail />
     </>
   );
 }

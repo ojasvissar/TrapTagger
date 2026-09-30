@@ -36,7 +36,7 @@ export default function Checklist() {
       <div className="wrap">
         <div className="check-head">
           <div>
-            <p className="kicker" data-wp="">01 · The job ad</p>
+            <p className="kicker">01 · The job ad</p>
             <SplitText text="Your list, checked off" />
             <p className="lede">Every requirement from your flyer, with one line on how I meet it.</p>
           </div>

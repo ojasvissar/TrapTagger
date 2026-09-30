@@ -37,7 +37,7 @@ export default function Skills() {
   return (
     <Section id="skills" className="skills" topo="sand" seed={37} base={880}>
       <div className="wrap">
-        <p className="kicker" data-wp="">02 · What I'd bring</p>
+        <p className="kicker">02 · What I'd bring</p>
         <SplitText text="I've built the same kinds of things TrapTagger runs on" />
         <p className="lede">TrapTagger's code is public, so I read through it. Here are four things it needs, each with a real project where I've done that work.</p>
         <div className="cards">
