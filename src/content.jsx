@@ -22,15 +22,6 @@ export const rail = [
   { id: "contact", label: "Contact" },
 ];
 
-export const stats = [
-  { to: 4, suffix: "+", small: "yrs", text: "building and shipping ML" },
-  { to: 30, suffix: "+", text: "projects delivered for clients" },
-  { to: 4, dec: 1, small: "/4.0", text: "Master of Data Science, UBC" },
-  { label: "B.Tech", text: "Computer Science & Engineering" },
-];
-
-export const marquee = ["TrapTagger", "Camera traps", "Python", "React", "AWS Lambda", "Computer vision", "Species classification", "Big data", "Vancouver ⇄ Johannesburg"];
-
 export const checklist = [
   { title: "A degree in computer science or similar", text: "B.Tech in Computer Science & Engineering, Symbiosis Institute of Technology (2024)." },
   { title: "Strong Python", text: "My main language for over four years, used in every project on this page." },

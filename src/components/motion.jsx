@@ -34,24 +34,6 @@ export function SplitText({ as: Tag = "h2", text, accent, immediate = false, ...
   );
 }
 
-// counts up from zero once visible
-export function CountUp({ to, dec = 0 }) {
-  const [ref, inView] = useInView();
-  const [value, setValue] = useState(reduceMotion ? to : 0);
-  useEffect(() => {
-    if (!inView || reduceMotion) return;
-    let raf, t0 = performance.now();
-    const step = (t) => {
-      const k = Math.min(1, (t - t0) / 1400);
-      setValue(to * (1 - Math.pow(1 - k, 4)));
-      if (k < 1) raf = requestAnimationFrame(step);
-    };
-    raf = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(raf);
-  }, [inView, to]);
-  return <span ref={ref}>{value.toFixed(dec)}</span>;
-}
-
 // a link that leans toward the cursor
 export function Magnet({ className = "", children, ...rest }) {
   const ref = useRef(null);

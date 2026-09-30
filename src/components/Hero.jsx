@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import Topo from "./Topo.jsx";
 import Icon from "./Icon.jsx";
-import { CountUp, Magnet, SplitText } from "./motion.jsx";
-import { MAILTO, RESUME, marquee, stats } from "../content.jsx";
+import { Magnet, SplitText } from "./motion.jsx";
+import { MAILTO, RESUME } from "../content.jsx";
 import { interactive, reduceMotion } from "../lib/env.js";
 import { useNow } from "../hooks/useFrame.js";
 import { JHB, fmt } from "../lib/time.js";
@@ -88,20 +88,6 @@ export default function Hero() {
           <div className="shot" ref={shot}><CameraTrap /></div>
           <figcaption><b>What TrapTagger does, 100 million times a year:</b> find the animal, then name the species. (Illustration.)</figcaption>
         </figure>
-      </div>
-
-      <div className="wrap stats-grid">
-        {stats.map((s) => (
-          <div className="stat" key={s.text}>
-            <b>{s.label ?? <><CountUp to={s.to} dec={s.dec} />{s.suffix}</>}{s.small && <>{s.suffix ? " " : ""}<small>{s.small}</small></>}</b>
-            {s.text}
-          </div>
-        ))}
-      </div>
-      <div className="marquee" aria-hidden="true">
-        <div className="track">
-          {[...marquee, ...marquee].map((w, i) => <span key={i}>{w}</span>)}
-        </div>
       </div>
     </header>
   );
